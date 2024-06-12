@@ -15,10 +15,10 @@ export const create = async (req, res) => {
   }
 };
 
-export const list = async (req, res) => {
+export const getAll = async (req, res) => {
   try {
-    const user = await listUser()
-    res.status(200).send(user)
+    const users = await listUser()
+    res.status(200).send(users)
   } catch (error) {
     res.status(400).send(error)
   }

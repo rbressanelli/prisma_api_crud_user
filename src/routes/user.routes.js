@@ -1,8 +1,8 @@
-import { create, list } from "../controllers/user.controller";
+import { create, getAll } from "../controllers/user.controller";
 
 const userRoutes = (app) => {
   app.post("/user", create);
-  app.get("/user", list)
+  app.get("/user", getAll)
 };
 
 export default userRoutes;
