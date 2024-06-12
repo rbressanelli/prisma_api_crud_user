@@ -1,6 +1,12 @@
 import bcrypt from "bcrypt";
 import { userValidation } from "../validations/user.validation";
-import { createUser, getAll, getById } from "../repositories/user.repository";
+import {
+  createUser,
+  getAll,
+  getById,
+  updateUser,
+  deleteUser,
+} from "../repositories/user.repository";
 
 export const create = async (req, res) => {
   try {
@@ -28,6 +34,24 @@ export const getId = async (req, res) => {
   try {
     const user = await getById(Number(req.params.id));
     res.status(200).send(user);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
+export const update = async (req, res) => {
+  try {
+    const user = await updateUser(Number(req.params.id), req.body);
+    res.status(200).send(user);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
+export const delUser = async (req, res) => {
+  try {
+    await deleteUser(Number(req.params.id));
+    res.status(204).send();
   } catch (error) {
     res.status(400).send(error);
   }
