@@ -1,8 +1,9 @@
-import { create, getAll } from "../controllers/user.controller";
+import { create, getAllUsers, getId } from "../controllers/user.controller";
 
 const userRoutes = (app) => {
   app.post("/user", create);
-  app.get("/user", getAll)
+  app.get("/user", getAllUsers);
+  app.get("/user/:id", getId);
 };
 
 export default userRoutes;
